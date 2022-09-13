@@ -9,15 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "msw": "^0.47.2",
     "@mswjs/storage": "^0.1.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
+    "msw": "^0.47.2",
     "typescript": "^4.6.4",
     "vite": "^3.0.7"
   }
