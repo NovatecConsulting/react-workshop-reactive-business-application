@@ -1,0 +1,92 @@
+{
+  "ignorePatterns": ["src/**/vendor/**", "src/**/*.test.*"],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:react/jsx-runtime",
+    "plugin:react-prefer-function-component/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 13,
+    "sourceType": "module",
+    "project": [
+      "./tsconfig.json"
+    ]
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "import",
+    "react-prefer-function-component"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect",
+      "linkComponents": [
+        // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+        {
+          "name": "Link",
+          "linkAttribute": "to"
+        },
+        {
+          "name": "NavLink",
+          "linkAttribute": "to"
+        }
+      ]
+    }
+  },
+  "rules": {
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "function-declaration"
+      }
+    ],
+    "react/require-default-props": "off",
+    "import/order": "off",
+    "no-restricted-exports": "off",
+    "no-restricted-imports": ["error", {
+      "name": "@mui/icons-material",
+      "message": "Please use the default export of '@mui/icons-material/{IconName}' instead to reduce bundle size"
+    }],
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "vite.config.ts",
+          "src/setupTests.ts",
+          "src/testUtils.tsx",
+          "__mocks__/**",
+          "**/*.test.{ts,tsx}",
+          "**/__tests__/*.{ts,tsx}"
+        ]
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "comments": 120,
+        "ignoreStrings": true
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "max-classes-per-file": "off"
+  }
+}
