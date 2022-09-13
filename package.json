@@ -13,6 +13,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "msw": "^0.47.2",
+    "@mswjs/storage": "^0.1.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
