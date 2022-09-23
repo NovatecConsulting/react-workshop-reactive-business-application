@@ -12,17 +12,22 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.5",
+    "@types/node": "^18.7.18",
     "material-icons": "^1.11.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@mswjs/data": "^0.10.2",
     "@mswjs/storage": "^0.1.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
-    "msw": "^0.47.2",
+    "msw": "^0.47.3",
     "typescript": "^4.6.4",
     "vite": "^3.0.7"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
