@@ -1,4 +1,11 @@
-export interface BasicPokemon{
+export interface BasicPokemon {
   name: string;
-  picturePath: string
+  level: number;
+  img: string;
+  moves: Moves[];
+}
+
+export interface Moves {
+  name: string;
+  learnedAt: number;
 }
