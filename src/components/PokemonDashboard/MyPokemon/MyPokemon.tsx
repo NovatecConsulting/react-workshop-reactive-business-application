@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { CircularProgress, List, ListItem, ListItemText } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 import { BasicPokemon } from "../../../types/BasicPokemon";
 
 export default function MyPokemon({ pokemonId }: { pokemonId: string }) {
@@ -24,6 +30,19 @@ export default function MyPokemon({ pokemonId }: { pokemonId: string }) {
     return <CircularProgress></CircularProgress>;
   }
 
+  const handleLevelUp = () => {
+    fetch(`${BASE_API}/${pokemonId}/set-level`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: "Level up Pokemon",
+        level: pokemon.level + 1,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => setPokemon({ ...pokemon, level: data.level }));
+  };
+
   return (
     <>
       <img src={pokemon.img} alt={`pokemon with id ${pokemon.name}`} />
@@ -42,6 +61,9 @@ export default function MyPokemon({ pokemonId }: { pokemonId: string }) {
             </ListItem>
           ))}
       </List>
+      <Button onClick={handleLevelUp} variant="contained">
+        Level up!
+      </Button>
     </>
   );
 }
