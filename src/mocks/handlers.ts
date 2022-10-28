@@ -19,10 +19,22 @@ export const handlers = [
     return res(ctx.json(pokemon));
   }),
 
-  rest.post("/api/v1/my-pokemon/:id/set-level", async (req, res, ctx) => {
+  rest.post("/api/v1/my-pokemon/:id/level-up", async (req, res, ctx) => {
     const { id } = req.params;
 
-    const { level } = await req.json();
+    const foundPokemon = db.pokemon.findFirst({
+      where: {
+        id: {
+          equals: id,
+        },
+      }
+    })
+
+    if (!foundPokemon) {
+      return res(ctx.status(400, `Pokemon with id '${id}' not found`));
+    }
+
+    const newLevel = foundPokemon.level + 1;
 
     const pokemon = db.pokemon.update({
       where: {
@@ -31,7 +43,26 @@ export const handlers = [
         },
       },
       data: {
-        level: level,
+        level: newLevel,
+      },
+    });
+
+    return res(ctx.json(pokemon));
+  }),
+
+  rest.post("/api/v1/my-pokemon/:id/set-nickname", async (req, res, ctx) => {
+    const { id } = req.params;
+
+    const { nickname } = await req.json();
+
+    const pokemon = db.pokemon.update({
+      where: {
+        id: {
+          equals: id,
+        },
+      },
+      data: {
+        nickname: nickname,
       },
     });
 

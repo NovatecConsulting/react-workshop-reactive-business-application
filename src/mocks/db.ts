@@ -9,6 +9,7 @@ export const db = factory({
   pokemon: {
     id: primaryKey(String),
     name: String,
+    nickname: String,
     level: Number,
     img: String,
     moves: manyOf("moves"),
@@ -34,6 +35,7 @@ const moveVineWhip = db.moves.create({
 const bulbasaur = db.pokemon.create({
   id: "1",
   name: "Bulbasaur",
+  nickname: "",
   level: 5,
   img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
   moves: [moveGrowl, moveTackle, moveVineWhip],
@@ -53,6 +55,7 @@ const moveEmber = db.moves.create({
 const charmander = db.pokemon.create({
   id: "4",
   name: "Charmander",
+  nickname: "",
   level: 5,
   img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png",
   moves: [moveGrowl, moveScratch, moveEmber],
@@ -72,6 +75,7 @@ const moveWaterGun = db.moves.create({
 const squirtle = db.pokemon.create({
   id: "7",
   name: "Squirtle",
+  nickname: "",
   level: 5,
   img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
   moves: [moveTailWhip, moveTackle, moveWaterGun],

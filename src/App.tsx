@@ -10,13 +10,17 @@ function App () {
     method: 'GET'
   });
 
-  // test msw API: update pokemon level
-  fetch('/api/v1/my-pokemon/1/set-level', {
+  // test msw API: increase pokemon level
+  fetch('/api/v1/my-pokemon/1/level-up', {
+    method: 'POST'
+  });
+
+  fetch('/api/v1/my-pokemon/1/set-nickname', {
     method: 'POST',
     body: JSON.stringify({
-      level: 10
+      nickname: 'Bisabro'
     })
-  })
+  });
 
   return (
     <div className="App" >
