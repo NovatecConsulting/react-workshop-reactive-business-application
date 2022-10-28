@@ -15,15 +15,23 @@ function App () {
     method: 'POST'
   });
 
-  fetch('/api/v1/my-pokemon/1/set-nickname', {
-    method: 'POST',
-    body: JSON.stringify({
-      nickname: 'Bisabro'
-    })
-  });
+  let nickname = 'MOCK';
+
+  setTimeout(() => {
+    fetch('/api/v1/my-pokemon/1/set-nickname', {
+      method: 'POST',
+      body: JSON.stringify({
+        nickname: 'Bisabro'
+      })
+    }).then(async (res) => {
+      const data = await res.json();
+      nickname = data.nickname;
+    });
+  }, 1000);
 
   return (
     <div className="App" >
+      {nickname}
       <PokemonDashboard></PokemonDashboard>
 
         {/*<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png`}/>*/}
