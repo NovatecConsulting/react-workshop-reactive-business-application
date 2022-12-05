@@ -180,7 +180,7 @@ const squirtle: Pokemon = {
   ],
 };
 
-interface TeamPokemon extends BasicPokemon {
+export interface TeamPokemon extends BasicPokemon {
   teamPokemonId: string;
 }
 

@@ -6,7 +6,9 @@ import { App } from './App';
 import { MyPokemonTeam } from 'src/components/MyTeam/MyPokemonTeam';
 import { PokemonCatcher } from 'src/components/PokemonCatcher/PokemonCatcher';
 import { MyPokemonDetails } from 'src/components/MyTeam/MyPokemonDetails/MyPokemonDetails';
-import { worker } from 'src/mocks/browser';
+import { startInterceptor } from "src/mocks/intercept-fetch";
+
+startInterceptor();
 
 const router = createBrowserRouter([
   {
@@ -31,10 +33,8 @@ const router = createBrowserRouter([
 ]);
 
 // start msw service worker
-worker.start().then(() => {
-  ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  );
-});
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

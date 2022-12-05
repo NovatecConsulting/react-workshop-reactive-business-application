@@ -2,8 +2,7 @@ import { Box, Button, Stack } from '@mui/material';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PokemonChoice } from 'src/components/PokemonCatcher/PokemonChoice';
-import { PokemonTeamContext, usePokemonTeamContext } from 'src/context/PokemonTeamContext';
-import { uuidv4 } from '@mswjs/interceptors/lib/utils/uuid';
+import { usePokemonTeamContext } from 'src/context/PokemonTeamContext';
 import { BasicPokemon } from 'src/types/BasicPokemon';
 
 export function PokemonCatcher() {
@@ -13,7 +12,7 @@ export function PokemonCatcher() {
 
   const handlePokemonCatched = async () => {
     if (currentlySelectedPokemon) {
-      const teamPokemonId = uuidv4();
+      const teamPokemonId = crypto.randomUUID();
       addPokemonToTeam({ teamPokemonId, ...currentlySelectedPokemon });
       navigate(`/my-team/${teamPokemonId}`);
     }
