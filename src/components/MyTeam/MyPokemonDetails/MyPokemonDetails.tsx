@@ -2,18 +2,17 @@ import React, { useState } from 'react';
 import {
   Box,
   Button,
-  CircularProgress,
   Grid,
-  IconButton,
   List,
   ListItem,
-  Paper,
+  Paper, Stack,
   Typography,
 } from '@mui/material';
 import { StyledGridItem } from 'src/components/util/StyledGridItem';
 import { useParams } from 'react-router';
 import { usePokemonTeamContext } from 'src/context/PokemonTeamContext';
 import { MyPokemonDetailHeader } from 'src/components/MyTeam/MyPokemonDetails/MyPokemonDetailHeader';
+import {Link} from "react-router-dom";
 
 export function MyPokemonDetails() {
   const { teamPokemonId: paramsIdRaw } = useParams<'teamPokemonId'>();
@@ -26,7 +25,10 @@ export function MyPokemonDetails() {
   const [editNicknameMode, setEditNicknameMode] = useState(false)
 
   if (!pokemon) {
-    return <CircularProgress />;
+    return <Stack>
+      <Typography>Pokemon with id { teamPokemonId } not found!</Typography>
+      <Typography>Go <Link to='/pokemon-catcher'>catch some Pokemon</Link>!</Typography>
+    </Stack>;
   }
 
   const handleLevelUp = () => {

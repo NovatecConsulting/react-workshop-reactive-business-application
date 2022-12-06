@@ -4,7 +4,6 @@ export const startInterceptor = async () => {
   const { fetch: originalFetch } = window;
   window.fetch = async (url: string, init?: RequestInit): Promise<Response> => {
     if (url.startsWith('/api/v1/')) {
-      console.log(url, init);
       const response = handleEndpoints(url, init);
       if (response.data && response.status === 200) {
         const result = new Response(JSON.stringify(response.data));

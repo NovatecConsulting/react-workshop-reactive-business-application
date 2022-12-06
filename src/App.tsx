@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, Container, Paper, Toolbar } from '@mui/material';
 import { NavLink, Outlet } from 'react-router-dom';
-import { PokemonTeamProvider } from 'src/context/PokemonTeamContext';
+import { PokemonTeamContextValue, PokemonTeamProvider } from 'src/context/PokemonTeamContext';
 import { useEffect, useState } from 'react';
 import { TeamPokemon } from 'src/types/BasicPokemon';
 import { getPokemonTeamQuery, savePokemonTeamQuery } from 'src/api';
