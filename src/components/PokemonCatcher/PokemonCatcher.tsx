@@ -9,13 +9,8 @@ import { bulbasaurPokemon, charmanderPokemon, squirtlePokemon } from '../../mock
 
 export function PokemonCatcher() {
   const [currentlySelectedPokemon, setCurrentlySelectedPokemon] = useState<BasicPokemon>();
-  const navigate = useNavigate();
 
   const handlePokemonCatched = async () => {
-    if (currentlySelectedPokemon) {
-      const teamPokemonId = crypto.randomUUID();
-      navigate(`/my-team/${teamPokemonId}`);
-    }
   };
 
   // TODO: Task-5.1: replace hard coded starter pokemon with HTTP GET request (getStarterPokemon())
