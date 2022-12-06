@@ -19,11 +19,31 @@ export function PokemonCatcher() {
     }
   };
 
-  const [starterPokemon, setStarterPokemon] = useState<BasicPokemon[]>([]);
-
-  useEffect(() => {
-    getStarterPokemon().then((pokemon) => setStarterPokemon(pokemon));
-  }, []);
+  // TODO: Task-5.1: replace hard coded starter pokemon with HTTP GET request (getStarterPokemon())
+  const bulbasaur: BasicPokemon = {
+    id: '1',
+    name: 'Bulbasaur',
+    level: 5,
+    img: '/src/assets/pokemon-1.png',
+    nickname: '',
+    moves: []
+  };
+  const charmander: BasicPokemon = {
+    id: '4',
+    name: 'Charmander',
+    level: 5,
+    img: '/src/assets/pokemon-4.png',
+    nickname: '',
+    moves: []
+  };
+  const squirtle: BasicPokemon = {
+    id: '7',
+    name: 'Squirtle',
+    level: 5,
+    img: '/src/assets/pokemon-7.png',
+    nickname: '',
+    moves: []
+  };
 
   return (
     <Box display="flex" flexDirection="column" width="100%">
@@ -35,14 +55,22 @@ export function PokemonCatcher() {
         spacing={16}
         marginBottom="24px"
       >
-        {starterPokemon.map((pokemon) => (
-          <PokemonChoice
-            key={pokemon.id}
-            pokemon={pokemon}
-            onSelectPokemon={setCurrentlySelectedPokemon}
-            isSelected={currentlySelectedPokemon?.id === pokemon.id}
-          />
-        ))}
+        {/*TODO: Task-5.1: loop over starterPokemon */}
+        <PokemonChoice
+          pokemon={bulbasaur}
+          isSelected={currentlySelectedPokemon?.id === bulbasaur.id}
+          onSelectPokemon={setCurrentlySelectedPokemon}
+        />
+        <PokemonChoice
+          pokemon={charmander}
+          isSelected={currentlySelectedPokemon?.id === charmander.id}
+          onSelectPokemon={setCurrentlySelectedPokemon}
+        />
+        <PokemonChoice
+          pokemon={squirtle}
+          isSelected={currentlySelectedPokemon?.id === squirtle.id}
+          onSelectPokemon={setCurrentlySelectedPokemon}
+        />
       </Stack>
 
       <Button
