@@ -49,7 +49,7 @@ export function MyPokemonDetails() {
   }
 
   return (
-    <Paper sx={{ width: 'fit-content', alignSelf: 'center', padding: '1rem 6rem' }}>
+    <Paper sx={{ width: 'fit-content', alignSelf: 'center', padding: '1rem 6rem', marginTop: '1rem'}}>
       <Box
         display="flex"
         bgcolor={'grey'}
