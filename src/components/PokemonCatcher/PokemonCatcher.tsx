@@ -1,9 +1,10 @@
 import { Box, Button, Stack } from '@mui/material';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PokemonChoice } from 'src/components/PokemonCatcher/PokemonChoice';
 import { usePokemonTeamContext } from 'src/context/PokemonTeamContext';
 import { BasicPokemon } from 'src/types/BasicPokemon';
+import { getStarterPokemon } from "../../api";
 
 export function PokemonCatcher() {
   const [currentlySelectedPokemon, setCurrentlySelectedPokemon] = useState<BasicPokemon>();
@@ -18,6 +19,11 @@ export function PokemonCatcher() {
     }
   };
 
+  const [starterPokemon, setStarterPokemon] = useState<BasicPokemon[]>([]);
+
+  useEffect(() => {
+    getStarterPokemon().then((pokemon) => setStarterPokemon(pokemon));
+  }, []);
 
   return (
     <Box display="flex" flexDirection="column" width="100%">
@@ -29,21 +35,14 @@ export function PokemonCatcher() {
         spacing={16}
         marginBottom="24px"
       >
-        <PokemonChoice
-          id="1"
-          onSelectPokemon={setCurrentlySelectedPokemon}
-          isSelected={currentlySelectedPokemon?.id === '1'}
-        />
-        <PokemonChoice
-          id="4"
-          onSelectPokemon={setCurrentlySelectedPokemon}
-          isSelected={currentlySelectedPokemon?.id === '4'}
-        />
-        <PokemonChoice
-          id="7"
-          onSelectPokemon={setCurrentlySelectedPokemon}
-          isSelected={currentlySelectedPokemon?.id === '7'}
-        />
+        {starterPokemon.map((pokemon) => (
+          <PokemonChoice
+            key={pokemon.id}
+            pokemon={pokemon}
+            onSelectPokemon={setCurrentlySelectedPokemon}
+            isSelected={currentlySelectedPokemon?.id === pokemon.id}
+          />
+        ))}
       </Stack>
 
       <Button

@@ -187,3 +187,5 @@ export interface TeamPokemon extends BasicPokemon {
 export const pokemonDb = new LiveStorage<Pokemon[]>('pokemon', [bulbasaur, charmander, squirtle]);
 
 export const teamDB = new LiveStorage<TeamPokemon[]>('pokemonTeam', []);
+
+export const starterPokemon: Pokemon[] = [bulbasaur, charmander, squirtle];

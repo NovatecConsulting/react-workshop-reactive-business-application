@@ -16,3 +16,6 @@ export const savePokemonTeamQuery = (pokemonTeam: TeamPokemon[]): Promise<TeamPo
   }).then((response) => {
     return response.json();
   });
+
+export const getStarterPokemon = (): Promise<BasicPokemon[]> =>
+  fetch(`${BASE_API}/starter-pokemon`).then((response) => response.json());

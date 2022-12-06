@@ -1,4 +1,4 @@
-import {Pokemon, pokemonDb, teamDB, TeamPokemon} from "./db";
+import {Pokemon, pokemonDb, starterPokemon, teamDB, TeamPokemon} from "./db";
 
 export const startInterceptor = async () => {
   const { fetch: originalFetch } = window;
@@ -32,6 +32,9 @@ const handleEndpoints = (url: string, init?: RequestInit): CustomResponse<any> =
   }
   if (endpoint.startsWith('my-team/save')) {
     return saveMyTeam(JSON.parse(init?.body as string) as TeamPokemon[]);
+  }
+  if (endpoint.startsWith('starter-pokemon')) {
+    return getStarterPokemon();
   }
   return new CustomResponse({
     status: 400,
@@ -96,4 +99,6 @@ const saveMyTeam = (pokemonTeam: TeamPokemon[]): CustomResponse<TeamPokemon[]> =
   return new CustomResponse<TeamPokemon[]>({data: teamDB.getValue()});
 };
 
-
+const getStarterPokemon = (): CustomResponse<Pokemon[]> => {
+  return new CustomResponse<Pokemon[]>({ data: starterPokemon })
+};

@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Box, IconButton, Stack } from '@mui/material';
-import { PokeballButton } from 'src/components/PokemonCatcher/PokemonSelection/PokeballButton';
-import { BasicPokemon, TeamPokemon } from 'src/types/BasicPokemon';
-import { getPokemonByIdQuery } from 'src/api';
+import React from 'react';
+import { Box, IconButton, Typography } from '@mui/material';
+import { BasicPokemon } from 'src/types/BasicPokemon';
 
 export function PokemonChoice({
-  id,
+  pokemon,
   isSelected,
   onSelectPokemon,
 }: {
-  id: string;
+  pokemon: BasicPokemon;
   isSelected: boolean;
   onSelectPokemon: (pokemon: BasicPokemon) => void;
 }) {
-  const [pokemon, setPokemon] = useState<BasicPokemon>();
-
-  useEffect(() => {
-    getPokemonByIdQuery(id).then((basicPokemon) => setPokemon(basicPokemon));
-  }, []);
-
   const handlePokeballClick = () => {
-    if (pokemon) {
-      onSelectPokemon(pokemon);
-    }
+    onSelectPokemon(pokemon);
   }
 
   return (
@@ -33,7 +23,12 @@ export function PokemonChoice({
       width={'100px'}
       alignItems={'center'}
     >
-      {isSelected && <img width={'100px'} src={`${pokemon?.img}`} alt={`pokemon with id ${id}`} />}
+      {isSelected && (
+        <>
+          <img width={'100px'} src={`${pokemon?.img}`} alt={`pokemon with name ${pokemon.name}`} />
+          <Typography>{pokemon?.name}</Typography>
+        </>
+      )}
       <IconButton onClick={handlePokeballClick} sx={{width: 'fit-content'}}>
         <img width={'48px'} height={'48px'}
              src={'src/assets/pokeball_closed.png'}
