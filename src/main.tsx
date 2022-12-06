@@ -8,7 +8,9 @@ import { PokemonCatcher } from 'src/components/PokemonCatcher/PokemonCatcher';
 import { MyPokemonDetails } from 'src/components/MyTeam/MyPokemonDetails/MyPokemonDetails';
 import { startInterceptor } from "src/mocks/intercept-fetch";
 
+// if (!import.meta.vitest){
 startInterceptor();
+// }
 
 const router = createBrowserRouter([
   {

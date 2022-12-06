@@ -6,6 +6,8 @@
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
     "preview": "vite preview",
     "lint": "eslint --cache --cache-location=node_modules/.cache/eslint src --fix",
     "format": "prettier -uw src"
@@ -16,15 +18,21 @@
     "@mui/icons-material": "^5.10.5",
     "@mui/material": "^5.10.5",
     "@types/node": "^18.7.18",
+    "node": "^19.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
     "@mswjs/storage": "^0.1.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
+    "@vitest/coverage-c8": "^0.24.5",
+    "@vitest/ui": "^0.25.4",
     "eslint": "^8.27.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^16.1.0",
@@ -34,8 +42,11 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-react-prefer-function-component": "0.0.7",
+    "jsdom": "^20.0.3",
     "prettier": "^2.5.1",
     "typescript": "^4.6.4",
-    "vite": "^3.2.3"
+    "vite": "^3.2.3",
+    "vite-tsconfig-paths": "^3.6.0",
+    "vitest": "^0.25.4"
   }
 }
