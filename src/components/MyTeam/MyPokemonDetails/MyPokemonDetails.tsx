@@ -28,19 +28,10 @@ export function MyPokemonDetails() {
   }
 
   const handleLevelUp = () => {
-    setPokemon((prevState) => {
-      const newState = { ...prevState, level: ++prevState.level };
-      return newState;
-    });
+    console.log('Todo: Implement level up');
   };
 
-  const handleUpdateNickname = (nickname: string) => {
-    setPokemon((prevState) => {
-      const newState = { ...prevState, nickname: nickname };
-      setEditNicknameMode(false);
-      return newState;
-    });
-  };
+  const handleUpdateNickname = (nickname: string) => {};
 
   return (
     <Paper sx={{ width: 'fit-content', alignSelf: 'center', padding: '1rem 6rem' }}>
