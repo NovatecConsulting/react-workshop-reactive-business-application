@@ -1,40 +1,35 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Grid,
-  List,
-  ListItem,
-  Paper, Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Grid, List, ListItem, Paper, Stack, Typography } from '@mui/material';
 import { StyledGridItem } from 'src/components/util/StyledGridItem';
 import { useParams } from 'react-router';
 import { usePokemonTeamContext } from 'src/context/PokemonTeamContext';
 import { MyPokemonDetailHeader } from 'src/components/MyTeam/MyPokemonDetails/MyPokemonDetailHeader';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { TeamPokemon } from '../../../types/BasicPokemon';
+import { charmanderPokemon } from '../../../mocks/db';
 
 export function MyPokemonDetails() {
   const { teamPokemonId: paramsIdRaw } = useParams<'teamPokemonId'>();
   const teamPokemonId = String(paramsIdRaw);
-  const { pokemonTeam, updatePokemon } = usePokemonTeamContext();
 
-  const [pokemon, setPokemon] = useState(
-    pokemonTeam.find((teamMember) => teamMember.teamPokemonId === teamPokemonId)
-  );
-  const [editNicknameMode, setEditNicknameMode] = useState(false)
+  const [pokemon, setPokemon] = useState({ teamPokemonId: teamPokemonId, ...charmanderPokemon });
+
+  const [editNicknameMode, setEditNicknameMode] = useState(false);
 
   if (!pokemon) {
-    return <Stack>
-      <Typography>Pokemon with id { teamPokemonId } not found!</Typography>
-      <Typography>Go <Link to='/pokemon-catcher'>catch some Pokemon</Link>!</Typography>
-    </Stack>;
+    return (
+      <Stack>
+        <Typography>Pokemon with id {teamPokemonId} not found!</Typography>
+        <Typography>
+          Go <Link to="/pokemon-catcher">catch some Pokemon</Link>!
+        </Typography>
+      </Stack>
+    );
   }
 
   const handleLevelUp = () => {
     setPokemon((prevState) => {
       const newState = { ...prevState, level: ++prevState.level };
-      updatePokemon(newState);
       return newState;
     });
   };
@@ -42,11 +37,10 @@ export function MyPokemonDetails() {
   const handleUpdateNickname = (nickname: string) => {
     setPokemon((prevState) => {
       const newState = { ...prevState, nickname: nickname };
-      updatePokemon(newState);
-      setEditNicknameMode(false)
+      setEditNicknameMode(false);
       return newState;
     });
-  }
+  };
 
   return (
     <Paper sx={{ width: 'fit-content', alignSelf: 'center', padding: '1rem 6rem' }}>
@@ -62,10 +56,12 @@ export function MyPokemonDetails() {
             <img src={`${pokemon.img}`} alt={`pokemon with id ${pokemon.name}`} />
           </Box>
           <List sx={{ marginLeft: '2rem' }}>
-            <MyPokemonDetailHeader pokemon={pokemon}
-                                   editNicknameMode={editNicknameMode}
-                                   setEditNicknameMode={setEditNicknameMode}
-                                   handleUpdateNickname={handleUpdateNickname} />
+            <MyPokemonDetailHeader
+              pokemon={pokemon}
+              editNicknameMode={editNicknameMode}
+              setEditNicknameMode={setEditNicknameMode}
+              handleUpdateNickname={handleUpdateNickname}
+            />
             <ListItem>
               <Typography variant="subtitle1">Level: {pokemon.level}</Typography>
               <Button

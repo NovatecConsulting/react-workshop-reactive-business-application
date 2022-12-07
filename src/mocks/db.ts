@@ -52,7 +52,7 @@ const moveSeedBomb: Move = {
   name: 'Seed Bomb',
   learnedAt: 18,
 };
-const bulbasaur: Pokemon = {
+export const bulbasaurPokemon: Pokemon = {
   id: '1',
   name: 'Bulbasaur',
   nickname: '',
@@ -106,7 +106,7 @@ const moveFlamethrower: Move = {
   name: 'Flamethrower',
   learnedAt: 24,
 };
-const charmander: Pokemon = {
+export const charmanderPokemon: Pokemon = {
   id: '4',
   name: 'Charmander',
   nickname: '',
@@ -161,7 +161,7 @@ const moveAquaTail: Move = {
   name: 'Aqua Tail',
   learnedAt: 24,
 };
-const squirtle: Pokemon = {
+export const squirtlePokemon: Pokemon = {
   id: '7',
   name: 'Squirtle',
   nickname: '',
@@ -184,8 +184,12 @@ export interface TeamPokemon extends BasicPokemon {
   teamPokemonId: string;
 }
 
-export const pokemonDb = new LiveStorage<Pokemon[]>('pokemon', [bulbasaur, charmander, squirtle]);
+export const pokemonDb = new LiveStorage<Pokemon[]>('pokemon', [
+  bulbasaurPokemon,
+  charmanderPokemon,
+  squirtlePokemon,
+]);
 
 export const teamDB = new LiveStorage<TeamPokemon[]>('pokemonTeam', []);
 
-export const starterPokemon: Pokemon[] = [bulbasaur, charmander, squirtle];
+export const starterPokemon: Pokemon[] = [bulbasaurPokemon, charmanderPokemon, squirtlePokemon];
