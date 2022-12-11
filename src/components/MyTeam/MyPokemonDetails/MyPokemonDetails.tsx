@@ -11,8 +11,12 @@ import { charmanderPokemon } from '../../../mocks/db';
 export function MyPokemonDetails() {
   const { teamPokemonId: paramsIdRaw } = useParams<'teamPokemonId'>();
   const teamPokemonId = String(paramsIdRaw);
+  // TODO: Aufgabe 4.2: Team und update Funktion aus Kontext laden
 
-  const [pokemon, setPokemon] = useState({ teamPokemonId: teamPokemonId, ...charmanderPokemon });
+  const [pokemon, setPokemon] = useState(
+    // TODO: Aufgabe 4.2: Pokemon aus Kontext laden mithilfe von `find()` - die ID aus Params nehmen
+    { teamPokemonId: teamPokemonId, ...charmanderPokemon }
+  );
 
   const [editNicknameMode, setEditNicknameMode] = useState(false);
 
@@ -30,6 +34,7 @@ export function MyPokemonDetails() {
   const handleLevelUp = () => {
     setPokemon((prevState) => {
       const newState = { ...prevState, level: ++prevState.level };
+      // TODO: Aufgabe 4.2: Level up im Kontext persistieren
       return newState;
     });
   };
@@ -37,6 +42,7 @@ export function MyPokemonDetails() {
   const handleUpdateNickname = (nickname: string) => {
     setPokemon((prevState) => {
       const newState = { ...prevState, nickname: nickname };
+      // TODO: Aufgabe 4.2: Spitznamen im Kontext persistieren
       setEditNicknameMode(false);
       return newState;
     });
