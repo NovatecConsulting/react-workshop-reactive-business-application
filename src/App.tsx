@@ -11,6 +11,8 @@ export function App() {
     { label: 'My Team', route: '/my-team' },
   ];
 
+  // TODO: Aufgabe 4.2: Kontext definieren mit den `pokemonTeam`, `addPokemonToTeam` und `updatePokemon`
+
   const [team, setTeam] = useState([] as TeamPokemon[]);
 
   useEffect(() => {
@@ -18,6 +20,7 @@ export function App() {
   }, []);
 
   return (
+    //TODO: Aufgabe 4.2: Provider um App wrappen
     <Paper sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <AppBar position="static" sx={{ maxHeight: '64px' }}>
         <Container maxWidth="xl">
@@ -34,6 +37,7 @@ export function App() {
                 </Button>
               ))}
             </Box>
+            {/*TODO: Aufgabe 4.2: Onclick hinzufügen mit POST Request an "Datenbank" */}
             <Button variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
               Save
             </Button>

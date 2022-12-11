@@ -10,15 +10,17 @@ import { bulbasaurPokemon, charmanderPokemon, squirtlePokemon } from '../../mock
 export function PokemonCatcher() {
   const [currentlySelectedPokemon, setCurrentlySelectedPokemon] = useState<BasicPokemon>();
   const navigate = useNavigate();
+  // TODO: Aufgabe 4.2: Funktion zum Pokemon hinzufügen aus Kontext laden
 
   const handlePokemonCatched = async () => {
     if (currentlySelectedPokemon) {
       const teamPokemonId = crypto.randomUUID();
+      // TODO: Aufgabe 4.2: Pokemon zu Kontext hinzufügen
       navigate(`/my-team/${teamPokemonId}`);
     }
   };
 
-  // TODO: Task-5.1: replace hard coded starter pokemon with HTTP GET request (getStarterPokemon())
+  // TODO: Aufgabe 4.1: Hardcoded Starter ersetzen
   const bulbasaur: BasicPokemon = bulbasaurPokemon;
   const charmander: BasicPokemon = charmanderPokemon;
   const squirtle: BasicPokemon = squirtlePokemon;
@@ -33,7 +35,7 @@ export function PokemonCatcher() {
         spacing={16}
         marginBottom="24px"
       >
-        {/*TODO: Task-5.1: loop over starterPokemon */}
+        {/*TODO: Aufgabe 4.1: Über Starter iterieren */}
         <PokemonChoice
           pokemon={bulbasaur}
           isSelected={currentlySelectedPokemon?.id === bulbasaur.id}
