@@ -28,10 +28,15 @@ export function MyPokemonDetails() {
   }
 
   const handleLevelUp = () => {
+    // ToDo Aufgabe 1 aktuelles Pokemon um ein Level erhöhen
     console.log('Todo: Implement level up');
   };
 
-  const handleUpdateNickname = (nickname: string) => {};
+  const handleUpdateNickname = (nickname: string) => {
+    // ToDo Aufgabe 1 den Namen des aktuelles Pokemon anpassen.
+    // nicht vergessen den State des Textfeldes zu ändern.
+    console.log('Todo: Implement level up');
+  };
 
   return (
     <Paper sx={{ width: 'fit-content', alignSelf: 'center', padding: '1rem 6rem' }}>

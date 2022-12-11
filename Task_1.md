@@ -1,11 +1,11 @@
 
 # React Workshop
 
-## Aufgabe 2:
+## Aufgabe 1:
 Es ist noch nicht möglich mithilfe von Sonderbonbons das Pokemon zu leveln. Ebenso kann ein vermeintlicher Spitzname
 noch nicht gespeichert werden. Dies soll in dieser Aufgabe mit `useState()` gelöst werden.
 Es soll also je nach Button der State der Komponente so angepasst werden, dass entweder das Level um 1 erhöht wird 
-(Sonderbonbon/Level Up) Button oder der Spitzname gespeichert werden kann.
+(Sonderbonbon/Level Up) oder der Spitzname gespeichert werden kann.
 
 <details>
   <summary> Lösung </summary>
@@ -13,7 +13,7 @@ Es soll also je nach Button der State der Komponente so angepasst werden, dass e
 <p>
 
 MyPokemonDetails.tsx
-```jsx
+```tsx
 ...
 setPokemon((prevState) => {
     const newState = { ...prevState, level: ++prevState.level };
