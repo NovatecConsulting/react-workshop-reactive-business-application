@@ -1,9 +1,9 @@
 
 # React Workshop
 
-## Task 1 - Parent Child Communication
+## Task 2 - Parent Child Communication
 
-Die erste Aufgabe des Workshops ist es in der Komponente `PokemonCatcher` die Kommunikation
+Die zweite Aufgabe des Workshops ist es in der Komponente `PokemonCatcher` die Kommunikation
 zwischen der **Parent-(/Eltern-) Komponente** und den drei **Child-(/Kinder-) Komponenten** herzustellen.
 
 Ziel ist es, dass immer nur ein Pokemon auf Klick des dazugehörigen Pokeballs ausgewählt werden kann,
@@ -23,11 +23,30 @@ auf `/my-team` gelangen.
 
 
 <details>
+  <summary> Tipp 2 </summary>
+
+  <p>
+
+Die Parameter beachten, die an `PokemonChoice` übergeben werden und diese dort hinzufügen und verwenden.
+
+  </p>
+</details>
+
+<details>
   <summary> Lösung </summary>
 <p>
 
 PokemonChoice.tsx
 ```jsx
+export function PokemonChoice({
+    pokemon,
+    isSelected,
+    onSelectPokemon,
+  }: {
+    pokemon: BasicPokemon;
+    isSelected: boolean;
+    onSelectPokemon: (pokemon: BasicPokemon) => void;
+}) {
 ...
 onSelectPokemon(pokemon);
 ...
@@ -41,7 +60,6 @@ const navigate = useNavigate();
 navigate(`/my-team/);
 ...
 onSelectPokemon={setCurrentlySelectedPokemon}
-isSelected={currentlySelectedPokemon?.id === pokemon.id}
 ...
 ```
 </p>

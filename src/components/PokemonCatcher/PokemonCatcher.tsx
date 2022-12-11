@@ -11,9 +11,9 @@ export function PokemonCatcher() {
   const [currentlySelectedPokemon, setCurrentlySelectedPokemon] = useState<BasicPokemon>();
 
   const handlePokemonCatched = async () => {
+    // Todo Aufgabe 2 prüfen, ob ein Pokemon ausgewählt ist und auf `/my-team/` navigieren
   };
 
-  // TODO: Task-5.1: replace hard coded starter pokemon with HTTP GET request (getStarterPokemon())
   const bulbasaur: BasicPokemon = bulbasaurPokemon;
   const charmander: BasicPokemon = charmanderPokemon;
   const squirtle: BasicPokemon = squirtlePokemon;
@@ -28,7 +28,6 @@ export function PokemonCatcher() {
         spacing={16}
         marginBottom="24px"
       >
-        {/*TODO: Task-5.1: loop over starterPokemon */}
         <PokemonChoice
           pokemon={bulbasaur}
           isSelected={currentlySelectedPokemon?.id === bulbasaur.id}
