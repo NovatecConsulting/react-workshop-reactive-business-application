@@ -10,17 +10,20 @@ export function ControlledNicknameForm({
   value: string;
 }) {
   const [state, setState] = useState(value);
+  // ToDo Aufgabe 3 Fehlerstate einführen
 
-  // Aufgabe 3 Regex Tipp: !/^([^0-9]*)$/g
+  // ToDo Aufgabe 3 Funktion zur Evaluierung des Inputs erstellen und diesen dort validieren.
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
+        // ToDo Aufgabe 3 abfangen, wenn Input inkorrekt
         updateNickname(state);
       }}
     >
       <Box display="flex" alignItems="center">
+        {/*ToDo Aufgabe 3 onChange anpassen*/}
         <TextField
           id="nickname"
           label="Nickname"
